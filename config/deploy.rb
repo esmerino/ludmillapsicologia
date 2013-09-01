@@ -1,0 +1,45 @@
+require "bundler/capistrano"
+
+server "192.241.246.187", :web, :app, :db, primary: true
+
+set :application, "ludmillapsicologia.com.br"
+# Next feature => remove root acces
+set :user, "root"
+set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+set :scm, "git"
+set :repository, "git@github.com:esmerino/#{application}.git"
+set :branch, "master"
+
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
+namespace :deploy do
+	desc "Start application"
+	task :start, :roles => :app do
+		run "cd #{current_path}; bundle exec rails s -p 8080 -e production"
+	end
+
+	desc "Stop application"
+	task :stop, :roles => :app do
+		run "ps|grep rails|grep -v grep|awk '{print $1}'|xargs kill -9"
+	end
+
+	desc "Install Ruby"
+	task :ruby_install, :roles => :app do
+		run "apt-get -y update"
+		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev"
+		run "cd /tmp"
+		run "wget http://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p0.tar.gz"
+		run "tar -xvzf ruby-2.0.0-p0.tar.gz"
+		run "cd ruby-2.0.0-p0"
+		run "./configure --prefix=/usr/local"
+		run "make"
+		run "make install"
+	end
+	
+end
