@@ -35,7 +35,9 @@ namespace :deploy do
 	desc "Install Essential"
 	task :install, :roles => :app do
 		run "apt-get -y update"
-		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev git-core sqlite3 libsqlite3-dev"
+		run "add-apt-repository ppa:chris-lea/node.js"
+		run "apt-get -y update"
+		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev git-core sqlite3 libsqlite3-dev nodejs"
 	end
 
 	desc "Adding User"
