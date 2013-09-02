@@ -23,7 +23,7 @@ namespace :deploy do
 
 	desc "Stop application"
 	task :stop, :roles => :app do
-		run "ps|grep rails|grep -v grep|awk '{print $1}'|xargs kill -9"
+		run "ps aux|grep rails|grep -v grep|awk '{print $2}'|xargs kill -9"
 	end
 
 	desc "Install Ruby"
@@ -32,10 +32,10 @@ namespace :deploy do
 		run "gem install bundler"
 	end
 
-	desc "Install Ruby"
+	desc "Install Essential"
 	task :install, :roles => :app do
 		run "apt-get -y update"
-		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev git-core"
+		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev git-core sqlite3"
 	end
 
 	desc "Adding User"
