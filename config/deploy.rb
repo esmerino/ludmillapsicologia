@@ -35,7 +35,7 @@ namespace :deploy do
 	desc "Install Essential"
 	task :install, :roles => :app do
 		run "apt-get -y update"
-		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev git-core sqlite3"
+		run "apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev git-core sqlite3 libsqlite3-dev"
 	end
 
 	desc "Adding User"
