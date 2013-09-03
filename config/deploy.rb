@@ -18,7 +18,7 @@ ssh_options[:forward_agent] = true
 namespace :deploy do
 	desc "Start application"
 	task :start, :roles => :app do
-		run "cd #{current_path}; bundle exec rails s -p 8080 -e production -d"
+		run "cd #{current_path}; bundle exec rails s -p 6868 -e production -d"
 	end
 
 	desc "Stop application"
