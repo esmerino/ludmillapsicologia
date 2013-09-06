@@ -7,6 +7,8 @@ namespace :rbenv do
     run "rbenv #{command}", :pty => true do |ch, stream, data|
       if data =~ /\[sudo\].password.for/
         ch.send_data(Capistrano::CLI.password_prompt("Password:") + "\n")
+      elsif data =~ /continue.with.installation\?.\(y\/N\)/
+        ch.send_data(Capistrano::CLI.password_prompt("Value:") + "\n")
       else
         Capistrano::Configuration.default_io_proc.call(ch, stream, data)
       end

@@ -12,6 +12,6 @@ namespace :deploy do
 	desc "Install everything onto the server"
 	task :install do
 		run "#{sudo} apt-get -y update"
-		run "#{sudo} apt-get -y install python-software-properties"
+		run "#{sudo} apt-get -y install python-software-properties sqlite3 libsqlite3-dev"
 	end
 end
