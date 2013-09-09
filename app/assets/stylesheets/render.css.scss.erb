@@ -14,7 +14,7 @@ body * {
 }
 p {
 	font-weight:300;
-	font-size:16pt;
+	font-size:18pt;
 	line-height:20pt;
 }
 
@@ -48,8 +48,8 @@ h6 {color:#e6e6e6;}
 p {color:#e6e6e6;}
 
 .navbar-fixed-top {
-position:fixed;
-margin-bottom: 18px;
+	position:fixed;
+	margin-bottom: 18px;
 }
 
 /* footer */
@@ -107,11 +107,15 @@ span.rnd {
 }
 
 #third {
-	background: #333;
+	background: #e6e6e6;
+	height: 1300px;
+	background: white;
 	margin: 0 auto;
-	padding: 40px 0 200px 0;
+	overflow: hidden;
+	padding: 0;
 }
-#third p, #third h1, #third h2, #third h3, #third h4, #third h5, #third h6 {color:#e6e6e6;}
+
+#third p, #third h1, #third h2, #third h3, #third h4, #third h5, #third h6 {color: black;}
 #third h2 {font-weight:300;}
 
 #fourth {
@@ -125,40 +129,4 @@ span.rnd {
 	height: 800px;
 	margin: 0 auto;
 	padding: 40px 0 0 0;
-}
-
-/* objects */
-
-/* 
-you can add floating object in to design :
-
-<div class="bg"></div>
-<div class="bg2"></div>
-
-note : this will break bootstrap fluid and responsive.css
-*/
-
-.bg {
-	background: url(../assets/objects.png) top left no-repeat fixed;
-	height: 1200px;
-	margin: 0 auto;
-	padding: 0px;
-	position: absolute;
-	left:0px;
-	;
-	width: 800px;
-	z-index: 1;
-	overflow:hidden;
-}
-.bg2 {
-	background: url(../assets/objects2.png) top left no-repeat fixed;
-	height: 1400px;
-	margin: 0 auto;
-	padding: 0;
-	position: absolute;
-	left:-5px;
-	width: 1200px;
-	z-index: 1;
-	overflow:hidden;
-	top: 1379px;
 }
